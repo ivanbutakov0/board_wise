@@ -15,9 +15,9 @@ const MobilSidebar = () => {
 	const [isOpen, setIsOpen] = useState(false)
 	const pathname = usePathname()
 
-	// TODO: Maybe we should use state manager for menu?????
+	// FIXME: Maybe we should use state manager for menu?????
 
-	// TODO: Hydration fix
+	// FIXME: Hydration fix
 
 	useEffect(() => {
 		setIsOpen(false)
