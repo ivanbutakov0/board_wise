@@ -1,10 +1,13 @@
 'use client'
 
 import { createBoard } from '@/actions/create-board'
+import FormInput from '@/components/form/FormInput'
+import { Button } from '@/components/ui/button'
 import { useAction } from '@/hooks/use-action'
-import FormInput from './FormInput'
+import { useFormStatus } from 'react-dom'
 
 const Form = () => {
+	const { pending } = useFormStatus()
 	const { execute, fieldErrors } = useAction(createBoard, {
 		onSuccess: data => {
 			console.log(data, 'Success!')
@@ -21,8 +24,17 @@ const Form = () => {
 	}
 
 	return (
-		<form action={onSubmit} className='flex gap-4'>
-			<FormInput errors={fieldErrors} />
+		<form action={onSubmit} className='flex flex-col mb-2'>
+			<FormInput
+				className=''
+				placeholder='Title'
+				id='title'
+				errors={fieldErrors}
+				label='Board title'
+			/>
+			<Button disabled={pending} type='submit' size='sm'>
+				{pending ? 'Saving...' : 'Save'}
+			</Button>
 		</form>
 	)
 }
