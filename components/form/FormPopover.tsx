@@ -14,6 +14,7 @@ import { ElementRef, useRef } from 'react'
 import { toast } from 'sonner'
 import { Button } from '../ui/button'
 import FormInput from './FormInput'
+import FormPicker from './FormPicker'
 import FormSubmit from './FormSubmit'
 
 interface FormPopoverProps {
@@ -59,6 +60,7 @@ const FormPopover = ({
 				align={align}
 				className='w-80'
 			>
+				<FormPicker />
 				<div className='text-sm text-center pb-4 font-medium'>Create board</div>
 				<PopoverClose ref={closeRef} asChild>
 					<Button
