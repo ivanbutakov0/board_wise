@@ -37,7 +37,7 @@ const FormPopover = ({
 		onSuccess: data => {
 			toast.success('Board created successfully')
 			closeRef.current?.click()
-			//router.push(`/board/${data.id}`)
+			router.push(`/board/${data.id}`)
 		},
 		onError: error => {
 			toast.error(error)
@@ -48,7 +48,7 @@ const FormPopover = ({
 		const title = formData.get('title') as string
 		const image = formData.get('image') as string
 
-		execute({ title })
+		execute({ title, image })
 	}
 
 	return (
@@ -60,8 +60,8 @@ const FormPopover = ({
 				align={align}
 				className='w-80'
 			>
-				<FormPicker />
 				<div className='text-sm text-center pb-4 font-medium'>Create board</div>
+
 				<PopoverClose ref={closeRef} asChild>
 					<Button
 						variant='ghost'
@@ -71,6 +71,7 @@ const FormPopover = ({
 					</Button>
 				</PopoverClose>
 				<form action={onSubmit} className='space-y-2'>
+					<FormPicker id={'image'} errors={fieldErrors} />
 					<FormInput
 						id='title'
 						placeholder='Enter board title'
