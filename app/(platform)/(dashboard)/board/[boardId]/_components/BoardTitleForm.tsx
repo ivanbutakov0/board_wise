@@ -51,7 +51,7 @@ const BoardTitleForm = ({ data }: BoardTitleFormProps) => {
 	return (
 		<Button
 			onClick={handleClick}
-			className='font-bold text-lg h-auto w-auto p-1 px-2 bg-transparent hover:bg-transparent'
+			className='font-bold text-lg h-auto w-auto p-1 px-2 bg-transparent hover:bg-slate-50/10'
 		>
 			{title}
 		</Button>
