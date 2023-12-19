@@ -12,11 +12,21 @@ interface FormInputProps {
 	label?: string
 	className?: string
 	defaultValue?: string
+	onBlur?: () => void
 }
 
 const FormInput = React.forwardRef<HTMLInputElement, FormInputProps>(
 	(
-		{ errors, id, placeholder, disabled, label, className, defaultValue },
+		{
+			errors,
+			id,
+			placeholder,
+			disabled,
+			label,
+			className,
+			defaultValue,
+			onBlur,
+		},
 		ref
 	) => {
 		const { pending } = useFormStatus()
@@ -37,6 +47,7 @@ const FormInput = React.forwardRef<HTMLInputElement, FormInputProps>(
 						name={id}
 						placeholder={placeholder}
 						defaultValue={defaultValue}
+						onBlur={onBlur}
 					/>
 				</div>
 				<FormErrors errors={errors} id={id} />
