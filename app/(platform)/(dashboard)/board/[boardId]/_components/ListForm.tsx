@@ -13,11 +13,13 @@ import { useEventListener, useOnClickOutside } from 'usehooks-ts'
 import ListWrapper from './ListWrapper'
 
 const ListForm = () => {
-	const [isEditing, setIsEditing] = useState(false)
+	const router = useRouter()
+	const params = useParams()
+
 	const formRef = useRef<ElementRef<'form'>>(null)
 	const inputRef = useRef<ElementRef<'input'>>(null)
-	const params = useParams()
-	const router = useRouter()
+
+	const [isEditing, setIsEditing] = useState(false)
 
 	const enableEditing = () => {
 		setIsEditing(true)
@@ -33,9 +35,8 @@ const ListForm = () => {
 
 	const { execute, fieldErrors } = useAction(createList, {
 		onSuccess: data => {
-			toast.success(`List ${data.title} created!`)
+			toast.success(`List "${data.title}" created`)
 			disableEditing()
-			router.refresh()
 		},
 		onError: error => {
 			toast.error(error)
