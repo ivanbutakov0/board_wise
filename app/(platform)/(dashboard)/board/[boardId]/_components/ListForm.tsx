@@ -6,14 +6,13 @@ import FormSubmit from '@/components/form/FormSubmit'
 import { Button } from '@/components/ui/button'
 import { useAction } from '@/hooks/use-action'
 import { Plus, X } from 'lucide-react'
-import { useParams, useRouter } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import { ElementRef, useRef, useState } from 'react'
 import { toast } from 'sonner'
 import { useEventListener, useOnClickOutside } from 'usehooks-ts'
 import ListWrapper from './ListWrapper'
 
 const ListForm = () => {
-	const router = useRouter()
 	const params = useParams()
 
 	const formRef = useRef<ElementRef<'form'>>(null)
@@ -92,7 +91,7 @@ const ListForm = () => {
 	return (
 		<ListWrapper>
 			<button
-				className='w-full bg-white/80 hover:bg-white/60 px-4 py-2 flex items-center gap-2 rounded-sm font-semibold'
+				className='w-full bg-white/80 hover:bg-white/60 px-4 py-2 flex items-center gap-2 rounded-md font-semibold'
 				onClick={enableEditing}
 			>
 				<Plus />
