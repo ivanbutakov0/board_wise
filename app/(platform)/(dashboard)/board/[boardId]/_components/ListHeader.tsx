@@ -81,15 +81,12 @@ const ListHeader = ({ data, onAddCard }: ListHeaderProps) => {
 						onBlur={onBlur}
 						id='title'
 						defaultValue={title}
-						className='text-sm mb-[-8px] font-semibold h-5 bg-transparent border-none focus-visible:outline-none focus-visible:ring-transparent'
+						className='text-sm mb-[-8px] font-semibold h-5 border-none focus-visible:outline-none focus-visible:ring-transparent bg-white/70 py-4 shadow-sm'
 					/>
 					<button type='submit' hidden />
 				</form>
 			) : (
-				<div
-					onClick={enableEditing}
-					className='w-full pl-3 h-5  cursor-pointer'
-				>
+				<div onClick={enableEditing} className='w-full pl-3 h-5 cursor-pointer'>
 					{title}
 				</div>
 			)}

@@ -41,7 +41,7 @@ const FormInput = React.forwardRef<HTMLInputElement, FormInputProps>(
 					)}
 					<Input
 						ref={ref}
-						className={`font-semibold text-base ${className} `}
+						className={`font-semibold text-base ${className}`}
 						disabled={pending || disabled}
 						id={id}
 						name={id}
