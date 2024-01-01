@@ -35,6 +35,7 @@ const Header = ({ data }: HeaderProps) => {
 						className='text-lg border-none px-1 h-6 -mb-1'
 					/>
 				</form>
+
 				<p className='pl-1 text-sm text-muted-foreground'>
 					in list <span className='underline'>{data.list.title}</span>
 				</p>
