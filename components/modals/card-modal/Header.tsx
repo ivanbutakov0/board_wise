@@ -72,10 +72,11 @@ export default Header
 
 Header.Skeleton = function HeaderSkeleton() {
 	return (
-		<div className='flex items-center gap-2'>
+		<div className='flex items-start gap-2 pr-4'>
 			<Skeleton className='h-5 w-5' />
-			<div>
+			<div className='flex flex-col gap-2 w-full'>
 				<Skeleton className='h-5 w-full' />
+				<Skeleton className='h-4 w-[100px]' />
 			</div>
 		</div>
 	)
