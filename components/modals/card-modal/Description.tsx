@@ -111,8 +111,12 @@ export default Description
 
 Description.Skeleton = function DescriptionSkeleton() {
 	return (
-		<div className=''>
-			<Skeleton className='h-10 w-full' />
+		<div className='flex items-start gap-x-3 w-full pr-4'>
+			<Skeleton className='h-5 w-5' />
+			<div className='w-full flex flex-col gap-2'>
+				<Skeleton className='h-5 w-28' />
+				<Skeleton className='min-h-[88px] w-full' />
+			</div>
 		</div>
 	)
 }

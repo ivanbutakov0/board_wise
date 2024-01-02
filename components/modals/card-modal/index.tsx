@@ -21,7 +21,8 @@ const CardModal = () => {
 		<Dialog open={isOpen} onOpenChange={onClose}>
 			<DialogContent>
 				{!cardData ? <Header.Skeleton /> : <Header data={cardData} />}
-				{!cardData ? <Description.Skeleton /> : <Description data={cardData} />}
+				{/* {!cardData ? <Description.Skeleton /> : <Description data={cardData} />} */}
+				<Description.Skeleton />
 			</DialogContent>
 		</Dialog>
 	)
