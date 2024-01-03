@@ -4,7 +4,7 @@ import { createSafeAction } from '@/lib/create-safe-action'
 import { prisma } from '@/lib/db'
 import { auth } from '@clerk/nextjs'
 import { revalidatePath } from 'next/cache'
-import { DeleteList } from './schema'
+import { DeleteCard } from './schema'
 import { InputType, ReturnType } from './types'
 
 const handler = async (data: InputType): Promise<ReturnType> => {
@@ -18,28 +18,29 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 
 	const { id, boardId } = data
 
-	let list
+	let card
 
 	try {
-		list = await prisma.list.delete({
+		card = await prisma.card.delete({
 			where: {
 				id,
-				boardId,
-				board: {
-					orgId,
+				list: {
+					board: {
+						orgId,
+					},
 				},
 			},
 		})
 	} catch (err) {
 		return {
-			error: 'Filed to delete list',
+			error: 'Filed to delete card',
 		}
 	}
 
 	revalidatePath(`/board/${boardId}`)
 	return {
-		data: list,
+		data: card,
 	}
 }
 
-export const deleteList = createSafeAction(DeleteList, handler)
+export const deleteCard = createSafeAction(DeleteCard, handler)

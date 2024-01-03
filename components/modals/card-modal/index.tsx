@@ -4,6 +4,7 @@ import { Dialog, DialogContent } from '@/components/ui/dialog'
 import { useCardModal } from '@/hooks/use-card-modal'
 import { CardWithList } from '@/types'
 import { useQuery } from '@tanstack/react-query'
+import Actions from './Actions'
 import Description from './Description'
 import Header from './Header'
 
@@ -21,8 +22,8 @@ const CardModal = () => {
 		<Dialog open={isOpen} onOpenChange={onClose}>
 			<DialogContent>
 				{!cardData ? <Header.Skeleton /> : <Header data={cardData} />}
-				{/* {!cardData ? <Description.Skeleton /> : <Description data={cardData} />} */}
-				<Description.Skeleton />
+				{!cardData ? <Description.Skeleton /> : <Description data={cardData} />}
+				{!cardData ? <Actions.Skeleton /> : <Actions data={cardData} />}
 			</DialogContent>
 		</Dialog>
 	)

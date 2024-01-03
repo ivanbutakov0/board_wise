@@ -27,6 +27,18 @@ const Description = ({ data }: DescriptionProps) => {
 	const formRef = useRef<ElementRef<'form'>>(null)
 	const textareaRef = useRef<ElementRef<'textarea'>>(null)
 
+	const enableEditing = () => {
+		setIsEditing(true)
+
+		setTimeout(() => {
+			textareaRef.current?.focus()
+		})
+	}
+
+	const disableEditing = () => {
+		setIsEditing(false)
+	}
+
 	const { execute, fieldErrors } = useAction(updateCard, {
 		onSuccess: () => {
 			queryClient.invalidateQueries({
@@ -40,18 +52,6 @@ const Description = ({ data }: DescriptionProps) => {
 			toast.error('Something went wrong!')
 		},
 	})
-
-	const enableEditing = () => {
-		setIsEditing(true)
-
-		setTimeout(() => {
-			textareaRef.current?.focus()
-		})
-	}
-
-	const disableEditing = () => {
-		setIsEditing(false)
-	}
 
 	const onSubmit = (formData: FormData) => {
 		const description = formData.get('description') as string
