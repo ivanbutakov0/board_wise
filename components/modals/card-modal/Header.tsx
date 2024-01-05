@@ -17,14 +17,19 @@ interface HeaderProps {
 
 const Header = ({ data }: HeaderProps) => {
 	const [title, setTitle] = useState(data.title)
-	const params = useParams()
 	const inputRef = useRef<ElementRef<'input'>>(null)
+
 	const queryClient = useQueryClient()
+	const params = useParams()
 
 	const { execute } = useAction(updateCard, {
 		onSuccess: () => {
 			queryClient.invalidateQueries({
 				queryKey: ['card', data.id],
+			})
+
+			queryClient.invalidateQueries({
+				queryKey: ['card-logs', data.id],
 			})
 
 			toast.success('Card has been updated!')

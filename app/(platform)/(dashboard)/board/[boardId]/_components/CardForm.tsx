@@ -58,7 +58,7 @@ const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(
 
 		if (isEditing) {
 			return (
-				<form ref={formRef} action={onSubmit} className='space-y-3'>
+				<form ref={formRef} action={onSubmit} className='space-y-2 px-2 pt-2'>
 					<FormTextarea
 						id='title'
 						placeholder='Enter a title...'
