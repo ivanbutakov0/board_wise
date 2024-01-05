@@ -14,7 +14,7 @@ const Navbar = () => {
 						variant='outline'
 						asChild
 					>
-						<Link href='/log-in'>Login</Link>
+						<Link href='/sign-in'>Login</Link>
 					</Button>
 					<Button className='max-sm:text-xs' size='sm'>
 						<Link href='/sign-up'>Get BoardWise for free</Link>
