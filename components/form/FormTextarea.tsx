@@ -43,3 +43,5 @@ const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
 	}
 )
 export default FormTextarea
+
+FormTextarea.displayName = 'FormTextarea'
