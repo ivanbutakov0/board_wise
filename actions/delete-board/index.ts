@@ -3,6 +3,7 @@
 import createAuditLog from '@/lib/create-audit-log'
 import { createSafeAction } from '@/lib/create-safe-action'
 import { prisma } from '@/lib/db'
+import { decreaseAvailableCount } from '@/lib/org-limit'
 import { auth } from '@clerk/nextjs'
 import { ACTION, ENTITY_TYPE } from '@prisma/client'
 import { revalidatePath } from 'next/cache'
@@ -30,6 +31,8 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 				orgId,
 			},
 		})
+
+		await decreaseAvailableCount()
 
 		createAuditLog({
 			entityId: board.id,

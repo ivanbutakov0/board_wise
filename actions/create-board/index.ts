@@ -3,6 +3,7 @@
 import createAuditLog from '@/lib/create-audit-log'
 import { createSafeAction } from '@/lib/create-safe-action'
 import { prisma } from '@/lib/db'
+import { hasAvailableCount, incrementAvailableCount } from '@/lib/org-limit'
 import { auth } from '@clerk/nextjs'
 import { ACTION, ENTITY_TYPE } from '@prisma/client'
 import { revalidatePath } from 'next/cache'
@@ -15,6 +16,14 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 	if (!userId || !orgId) {
 		return {
 			error: 'Unauthorized',
+		}
+	}
+
+	const canCreate = await hasAvailableCount()
+
+	if (!canCreate) {
+		return {
+			error: 'No more boards available',
 		}
 	}
 
@@ -49,6 +58,8 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 				imageUserName,
 			},
 		})
+
+		await incrementAvailableCount()
 
 		createAuditLog({
 			entityId: board.id,
