@@ -32,7 +32,7 @@
     Kanban-based project management tool
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://board-wise.vercel.app/">View Demo</a>
   </p>
 </div>
 
